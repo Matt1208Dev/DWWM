@@ -23,7 +23,7 @@ WHERE `cus_countries_id` != 'FR'
 SELECT `cus_city`, `cus_countries_id`, `cou_name`
 FROM `customers`
 JOIN `countries`
-ON `cus_countries_id` = `cou_id`
+    ON `cus_countries_id` = `cou_id`
 ORDER BY `cus_city` ASC;
 
 
@@ -58,7 +58,7 @@ ORDER BY `pro_price` ASC LIMIT 1 ;
 SELECT `pro_id`, `pro_ref`, `pro_name`
 FROM `products`
 LEFT JOIN `orders_details`
-ON `pro_id` = `ode_pro_id`
+    ON `pro_id` = `ode_pro_id`
 WHERE `orders_details`.`ode_pro_id` IS NULL;
 
 ------------------------------------------------------------------
@@ -68,11 +68,11 @@ WHERE `orders_details`.`ode_pro_id` IS NULL;
 SELECT `pro_id`, `pro_ref`, `pro_name`, `cus_id`, `ord_id`, `ode_id` 
 FROM `products` 
 JOIN `orders_details` 
-ON `pro_id` = `ode_pro_id` 
+    ON `pro_id` = `ode_pro_id` 
 JOIN `orders` 
-ON `ord_id` = `ode_ord_id` 
+    ON `ord_id` = `ode_ord_id` 
 JOIN `customers` 
-ON `cus_id` = `ord_cus_id` 
+    ON `cus_id` = `ord_cus_id` 
 WHERE `cus_lastname` = 'Pikatchien';
 
 ------------------------------------------------------------------
@@ -82,72 +82,127 @@ WHERE `cus_lastname` = 'Pikatchien';
 SELECT `cat_id`, `cat_name`, `pro_name`
 FROM `products`
 JOIN `categories`
-ON `pro_cat_id` = `cat_id`
+    ON `pro_cat_id` = `cat_id`
 ORDER BY `cat_id` ASC;
 
 ------------------------------------------------------------------
 -- Q10 --
 ------------------------------------------------------------------
 
-SELECT CONCAT(`emp_lastname`, ' ', `emp_firstname`) AS 'Employé'
-FROM `employees`
-WHERE `emp_superior_id` IS NOT NULL;
-
-SELECT CONCAT(`emp_lastname`, ' ', `emp_firstname`) AS 'supérieur'
-FROM `employees`
-WHERE `emp_superior_id` IS NULL;
-
-
-------------------------------------------------------------------
--- Q3 --
-------------------------------------------------------------------
+SELECT a.`emp_id`, CONCAT(a.`emp_lastname`, ' ', a.`emp_firstname`) AS 'Employé', b.`emp_id`, CONCAT(b.`emp_lastname`, ' ', b.`emp_firstname`) AS 'supérieur'
+FROM `employees` AS a
+JOIN `employees` AS b
+    ON a.`emp_superior_id` = b.`emp_id`
+JOIN `shops`
+    ON a.`emp_sho_id` = `sho_id`
+WHERE a.`emp_superior_id` = b.`emp_id` AND `sho_city` = 'Compiègne'
+GROUP BY a.`emp_lastname`
+ORDER BY a.`emp_lastname` ASC
 
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q11 --
 ------------------------------------------------------------------
 
+SELECT `ode_pro_id` AS 'id_produit', `pro_name` AS 'nom_produit', `ode_id` AS 'num_commande', `ode_ord_id` AS 'num_ligne',`ode_discount` AS 'remise'
+FROM `orders_details`
+JOIN `products`
+    ON `ode_pro_id` = `pro_id`
+GROUP BY `ode_discount`
+HAVING Remise = (SELECT MAX(`ode_discount`) FROM `orders_details`);
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q13 --
 ------------------------------------------------------------------
 
+SELECT COUNT(*)
+FROM `customers`
+JOIN `countries`
+    ON `cus_countries_id` = `cou_id`
+WHERE `cou_name` = 'Canada';
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q14 --
 ------------------------------------------------------------------
 
+SELECT `ode_id`, `ode_unit_price`, `ode_discount`, `ode_quantity`, `ode_ord_id`, `ode_pro_id`, `ord_order_date`
+FROM `orders_details`
+JOIN `orders`
+    ON `ode_ord_id` = `ord_id`
+WHERE `ord_order_date` LIKE '2020%'
+ORDER BY `ode_ord_id` ASC;
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q15 --
 ------------------------------------------------------------------
 
+SELECT * 
+FROM `suppliers`
+WHERE `sup_id` NOT IN 
+    (
+    SELECT DISTINCT(`pro_sup_id`) 
+    FROM `products`
+    JOIN `orders_details`
+        ON `ode_pro_id` = `pro_id`
+    )
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q16 --
 ------------------------------------------------------------------
 
+SELECT ROUND(SUM(`ode_unit_price`*(1-`ode_discount`/100)*`ode_quantity`),2)
+FROM `orders_details`
+JOIN `orders`
+    ON `ode_ord_id` = `ord_id`
+WHERE `ord_order_date` LIKE '2020%';
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q17 --
 ------------------------------------------------------------------
 
+SELECT AVG(total_cde) AS 'panier_moyen'
+FROM (SELECT `ode_ord_id`, ROUND(SUM(`ode_unit_price`*(1-`ode_discount`/100)*`ode_quantity`),2) AS `total_cde`
+FROM `orders_details`
+JOIN `orders`
+    ON `ode_ord_id` = `ord_id`
+WHERE `ord_order_date` LIKE '2020%'
+GROUP BY `ode_ord_id`) sub;
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q18 --
 ------------------------------------------------------------------
 
+SELECT `ord_id`, `cus_lastname`, `ord_order_date`, ROUND(SUM(`ode_unit_price`*(1-`ode_discount`/100)*`ode_quantity`),2) AS `Total`
+FROM `orders_details`
+JOIN `orders`
+    ON `ode_ord_id` = `ord_id`
+JOIN `customers`
+    ON `ord_cus_id` = `cus_id`
+GROUP BY `ord_id`
+ORDER BY Total DESC;
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q19 --
 ------------------------------------------------------------------
 
+UPDATE `products` SET `pro_name` = 'Camper', `pro_price` = `pro_price`*0.9 
+WHERE `pro_id` = 12;
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q20 --
 ------------------------------------------------------------------
 
+UPDATE `products` SET `pro_price` = `pro_price`*1.011 
+WHERE `pro_cat_id` = 25;
 
 ------------------------------------------------------------------
--- Q3 --
+-- Q21 --
 ------------------------------------------------------------------
+
+DELETE `products` 
+FROM `products`
+JOIN `categories`
+    ON `cat_id` = `pro_cat_id`
+LEFT JOIN `orders_details`
+    ON `pro_id` = `ode_pro_id`
+WHERE `categories`.`cat_name` LIKE 'Tondeuses électriques' AND `orders_details`.`ode_pro_id` IS NULL;
