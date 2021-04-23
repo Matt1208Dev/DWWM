@@ -89,17 +89,22 @@ ORDER BY `cat_id` ASC;
 -- Q10 --
 ------------------------------------------------------------------
 
-SELECT a.`emp_id`, CONCAT(a.`emp_lastname`, ' ', a.`emp_firstname`) AS 'Employé', b.`emp_id`, CONCAT(b.`emp_lastname`, ' ', b.`emp_firstname`) AS 'supérieur'
+SELECT a.`emp_id`, CONCAT(a.`emp_lastname`, ' ', a.`emp_firstname`) AS 'Employé', post_emp.`pos_libelle` AS 'Poste de l\'employé', b.`emp_id`, CONCAT(b.`emp_lastname`, ' ', b.`emp_firstname`) AS 'Supérieur', post_sup.`pos_libelle` AS 'Poste du supérieur'
 FROM `employees` AS a
 JOIN `employees` AS b
     ON a.`emp_superior_id` = b.`emp_id`
 JOIN `shops`
     ON a.`emp_sho_id` = `sho_id`
+JOIN `posts` AS post_emp
+    ON post_emp.`pos_id` = a.`emp_pos_id`
+JOIN `posts` AS post_sup
+    ON post_sup.`pos_id` = b.`emp_pos_id`
 WHERE a.`emp_superior_id` = b.`emp_id` AND `sho_city` = 'Compiègne'
 GROUP BY a.`emp_lastname`
-ORDER BY a.`emp_lastname` ASC
+ORDER BY a.`emp_lastname` ASC;
 
 
+'
 ------------------------------------------------------------------
 -- Q11 --
 ------------------------------------------------------------------
