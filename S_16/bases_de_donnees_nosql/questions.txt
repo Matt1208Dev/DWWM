@@ -1,0 +1,35 @@
+Que signifie le terme NoSQL ?
+Le terme NoSQL signifie Not Only SQL.
+
+
+Pourquoi parle-t-on de "non relationnel" ?
+
+Le NoSQL est non relationnel car leur système n'utilise plus les concept de clé étrangères qui relient créer la dépendance d'une table à une autre en SQL.
+
+
+Comment sont nées les bases NoSQL ?
+Le volume toujours plus croissant de données à stocker et gérer rend leur traitement de plus en plus compliqué à gérer. C'est pourquoi il a été nécessaire de trouver des solutions plus "flexibles", sans reposer sur le paradigme du relationnel des SGBDDr traditionnelles et de se libérer certaines contraintes pour favoriser la distribution (structure des données, langage d'interrogation ou la cohérence).
+
+
+Y-a-t-il un seul type de base NoSQL ?
+Non. En réalité il existe 4 types de solutions NoSQL : 
+
+Les clés-valeurs :
+Le but de la famille clé-valeur est l'efficacité et la simplicité. Un système clé-valeur agit comme une énorme table de hachage distribuée sur le réseau.
+La clé identifie la donnée de manière unique et permet de la gérer. La valeur contient n'importe quel type de données.
+
+Les colonnes :
+Traditionnellement, les données sont représentées en ligne, représentant l'ensemble des attributs. Le stockage orienté colonne change ce paradigme en se focalisant sur chaque attribut et en les distribuant. Il est alors possible de focaliser les requêtes sur une ou plusieurs colonnes, sans avoir à traiter les informations inutiles (les autres colonnes).Cette solution est très adaptée pour effectuer des traitements sur des colonnes comme les agrégats (comptage, moyennes, co-occurences...)
+
+Les documents :
+Les bases orientées documents ressemblent sans doute le plus à ce que l'on peut faire dans une base de données classique pour des requêtes complexes. Le but de ce stockage est de manipuler des documents contenant des informations avec une structure complexe (types, listes, imbrications). Il repose sur le principe du clé/valeur, mais avec une extension sur les champs qui composent ce document.L'avantage de cette solution est d'avoir une approche structurée de chaque valeur, formant ainsi un document.
+
+Les graphes :
+Les trois premières familles NoSQL n'adressent pas le problème de corrélations entre les éléments. Prenons l'exemple d'un réseau social : dans certains cas, il devient très complexe de calculer la distance entre deux personnes non directement connectées. Et c'est ce type d'approche que résolvent les bases orientées Graphe.Dans la base orientée graphe, les données stockées sont : les nœuds, les liens et des propriétés sur ces nœuds et ces liens. Les requêtes que l'on peut exprimer sont basées sur la gestion de chemins, de propagations, d'agrégations, voire de recommandations.
+
+
+Dans quel cas utiliser une base NoSQL ?
+Afin d'obtenir de meilleures performances, les bases de données NoSQL ont abandonné certaines fonctionnalités proposées par défaut par les bases relationnelles comme les transactions ou encore les vérifications d'intégrités. Le NoSQL est l'équivalent d'une boîte de vitesse manuelle, elle permet d'obtenir de meilleure performance à condition de savoir quand et comment passer les vitesses. Les bases de données relationnelles, comme les boites automatiques permettent de ne pas avoir à se soucier de ce qui se passe derrière en automatisant les choses.
+A titre d'exemple, un site e-commerce peut trouver l'utilité d'une solution clé-valeur pour la gestion du panier d'achat, ou encore de la solution documents pour disposer d'un shéma flexible pour stocker la description de ses produits.
+Les CMS ou les plateformes de blogs qui hébergent des articles avec leurs commentaires, leurs liens, les rétro-liens et des tags pourraient faire bon usage de la solution colonnes.
+Dans toutes les situations où des entités appartiennent simultanément à plusieurs domaines (sociaux, professionnels, géographiques), comme les réseaux sociaux p.ex., la BDD orientée graphe permettra la navigation d’une entité à l’autre, beaucoup plus efficacement que ne sauraient le faire les SGBDR (forts mal nommés).
