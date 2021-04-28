@@ -40,9 +40,9 @@ THEN
                 END IF;
         
 
-    ELSE
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Aucun fournisseur correspondant à cet ID';
-    END IF;
+ELSE
+SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Aucun fournisseur correspondant à cet ID';
+END IF;
 
 END |
 

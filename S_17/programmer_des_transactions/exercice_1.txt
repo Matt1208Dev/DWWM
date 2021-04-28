@@ -1,0 +1,7 @@
+L'instruction START TRANSACTION est suivie d'une instruction UPDATE, mais aucune instruction COMMIT ou ROLLBACK correspondante n'est présente.
+Que concluez-vous ?
+
+J'en conclus que l'instruction s'est déroulé et on peut observer le changement dans la table en question.
+En revanche, en l'absence d'un COMMIT ou ROLLBACK, ces changements ne seront pas conservé à la sortie de la session de phpMyAdmin.
+
+Les données sont-elles modifiables par d'autres utilisateurs (ouvrez une nouvelle fenêtre de requête pour interroger le fournisseur 120 par une instruction SELECT) ?
