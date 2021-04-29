@@ -1,7 +1,46 @@
+Phase 2 - Mise en situation
+Exercice 1
+
 L'instruction START TRANSACTION est suivie d'une instruction UPDATE, mais aucune instruction COMMIT ou ROLLBACK correspondante n'est présente.
 Que concluez-vous ?
 
-J'en conclus que l'instruction s'est déroulé et on peut observer le changement dans la table en question.
-En revanche, en l'absence d'un COMMIT ou ROLLBACK, ces changements ne seront pas conservé à la sortie de la session de phpMyAdmin.
+    J'en conclus que l'instruction s'est déroulé et on peut observer le changement dans la table en question.
+    En revanche, en l'absence d'un COMMIT ou ROLLBACK, ces changements ne seront pas conservé à la sortie de la session.
+
 
 Les données sont-elles modifiables par d'autres utilisateurs (ouvrez une nouvelle fenêtre de requête pour interroger le fournisseur 120 par une instruction SELECT) ?
+
+    Non. Tant que les changements ne sont pas commités, il ne sont pas visualisables ni exploitables par les autres utilisateurs.
+
+
+La transaction est-elle terminée ?
+
+    Non elle sera lorsque nous lancerons un COMMIT pour la valider définitivement ou un ROLLBACK pour l'annuler.
+
+
+Comment rendre la modification permanente ?
+
+    Il est nécessaire d'insérer un "COMMIT;" à la suite des changement opérés dans la requête.
+
+
+Comment annuler la transaction ?
+
+    Il est nécessaire d'insérer un "ROLLBACK;" à la suite des changement opérés dans la requête.
+
+
+Codez les instructions nécessaires dans chaque cas pour vérifier vos réponses.
+
+
+
+START TRANSACTION;
+SELECT nomfou FROM fournis WHERE numfou = 120;    
+UPDATE fournis SET nomfou = 'GROSBRIGAND' WHERE numfou = 120;
+SELECT nomfou FROM fournis WHERE numfou = 120; 
+COMMIT; -- Les changements seront définitifs.
+
+
+START TRANSACTION;
+SELECT nomfou FROM fournis WHERE numfou = 120;    
+UPDATE fournis SET nomfou = 'GROSBRIGAND' WHERE numfou = 120;
+SELECT nomfou FROM fournis WHERE numfou = 120; 
+ROLLBACK; -- Les changements seront annulés.
