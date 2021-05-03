@@ -1,0 +1,40 @@
+
+
+2 _ Lecture - Ecriture
+
+2.1
+
+231
+462
+
+2.2
+
+Variables nombre, carre en numerique
+DEBUT
+Ecrire "Entrez un nombre"
+Lire nombre
+carre ← nombre * nombre
+Ecrire "le carré de ce nombre est : ", carre
+FIN
+
+2.3
+
+Variable prenom en caractere
+DEBUT
+Ecrire "Quel est votre prénom ?"
+Lire prenom
+Ecrire "Bonjour ", prenom
+FIN
+
+2.4
+
+Variable prix, quantite, tva, total en numerique
+DEBUT
+Ecrire "Entrez le prix de l'article hors taxe :"
+Lire prix
+Ecrire "Entrez la quantité :"
+Lire quantite
+Ecrire "Entrez le taux de TVA :"
+total ← prix * quantite * (1 + tva)
+Ecrire "Le prix total TTC est : ", total
+FIN

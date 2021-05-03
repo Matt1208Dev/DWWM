@@ -1,0 +1,136 @@
+
+
+3 _ Les Tests
+
+3.1
+
+Variable nbre en entier
+DEBUT
+Ecrire "Entrez un nombre différent de 0 :"
+Lire nbre
+Si
+    nbre < 0
+Alors
+    Ecrire "Le nombre est négatif."
+Sinon 
+    Ecrire "Le nombre est positif."
+FinSi
+FIN
+
+3.2
+
+Variables n1, n2 en entier
+DEBUT
+Ecrire "Entrez un nombre différent de 0 :"
+Lire n1
+Ecrire "Entrez un second nombre différent de 0 :"
+Lire n2
+Si
+    n1 < 0 OU n2 < 0 
+Alors
+    Ecrire "Le produit de ces deux nombres est négatif."
+Sinon 
+    Ecrire "Le produit de ces deux nombres est positif."
+FinSi
+FIN
+
+3.3
+
+Variables p1, p2, p3 en caractere
+DEBUT
+Ecrire "Entrez 3 prénoms :"
+Lire p1, p2, p3
+Si
+    p1 < p2 ET p2 < p3
+Alors
+    Ecrire "Les prénoms sont dans l'ordre alphabétique".
+Sinon
+    Ecrire "Les prénoms ne sont pas dans l'ordre alphabétique".
+FinSi
+FIN
+
+3.4
+
+Variable nbre en entier
+DEBUT
+Ecrire "Entrez un nombre :"
+Lire nbre
+Si
+    nbre = 0
+Alors
+    Ecrire "Le nombre est nul."
+SinonSi
+    nbre < 0
+Alors
+    Ecrire "Le nombre est négatif."
+Sinon 
+    Ecrire "Le nombre est positif."
+FinSi
+FIN
+
+3.5
+
+Variables n1, n2 en entier
+DEBUT
+Ecrire "Entrez un nombre :"
+Lire n1
+Ecrire "Entrez un second nombre :"
+Lire n2
+Si
+    n1 = 0 ou n2 = 0
+Alors
+    Ecrire "Le produit des deux nombres est nul."
+SinonSi 
+    n1 < 0 OU n2 < 0 
+Alors
+    Ecrire "Le produit de ces deux nombres est négatif."
+Sinon 
+    Ecrire "Le produit de ces deux nombres est positif."
+FinSi
+FIN
+
+3.6
+
+Variable age en entier
+DEBUT
+Ecrire "Entrez l'âge de l'enfant :"
+Lire age
+Si age >= 6 ET age <=7
+Alors
+    Ecrire "Poussin"
+SinonSi
+    age > 7 ET age <= 9
+Alors 
+    Ecrire "Pupille"
+SinonSi
+    age > 9 ET age <= 11
+Alors
+    Ecrire "Minime"
+SinonSi age >= 12
+Alors 
+    Ecrire "Cadet"
+FinSi
+FIN
+
+Autre possibilité d'algo
+
+Variable age en entier
+DEBUT
+Ecrire "Entrez l'âge de l'enfant :"
+Lire age >= 12
+Alors 
+    Ecrire "Cadet"
+SinonSi
+    age > 9
+Alors
+    Ecrire "Minime"
+SinonSi
+    age > 7
+Alors 
+    Ecrire "Pupille"
+SinonSi 
+    age >= 6
+Alors
+    Ecrire "Poussin"
+FinSi
+FIN
