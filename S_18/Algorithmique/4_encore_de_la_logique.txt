@@ -1,0 +1,211 @@
+
+
+4 _ Encore de la logique
+
+4.1
+
+Si Tutu <= Toto + 4 ET Tata <> "OK"
+Alors
+    Tutu ← Tutu - 1
+Sinon
+    Tutu ← Tutu + 1
+FinSi
+
+4.2
+
+Variables h, m en entier
+a ← h = 23
+b ← m = 59
+DEBUT
+Ecrire "Entrez 1 chiffres entre 0 et 23 :"
+Lire h
+Ecrire "Entrez 1 chiffres entre 0 et 59 :"
+Lire m
+Si a ET b 
+Alors
+    h ← 0
+    m ← 0
+Si b
+Alors
+    h ← h + 1
+    m ← 0
+    Ecrire "Dans une minute, il sera ", h, " heures et ", m, " minutes."
+Sinon
+    m ← m + 1
+    Ecrire "Dans une minute, il sera ", h, " heures et ", m, " minutes."
+FinSi
+FIN
+
+4.3
+
+Variables h, m, s en entier
+a ← h = 24
+b ← m = 60
+c ← s = 59
+DEBUT
+Ecrire "Entrez une heure entre 0 et 23 :"
+Lire h
+Ecrire "Entrez les minutes entre 0 et 59 :"
+Lire m
+Ecrire "Entrez les secondes entre 0 et 59 :"
+Lire s
+Si c
+Alors
+    s ← 0
+    m ← m + 1
+    Si b
+    Alors
+        m ← 0
+        h ← h + 1
+    FinSi
+    Si a
+    Alors
+        h ← 0
+    FinSi
+Sinon 
+    s ← s + 1
+FinSi
+Ecrire "Dans une seconde, il sera ", h, " heures, ", m, " minutes et", s, " secondes.
+FIN
+
+4.4
+
+Variables nb, px en numérique
+DEBUT
+Ecrire " Combien de photocopies voulez-vous ?"
+Lire nb
+Si nb <= 10
+Alors
+    px ← nb * 0.1
+SinonSi nb <= 30
+Alors
+    px ← 1 + (nb-10) * 0.09
+Sinon 
+    px ← 1 + (nb-10) * 0.09 + (nb-20) * 0.08
+FinSi
+Ecrire "Ces ", nb, " photocopies vous couteront ", px, " euros."
+FIN
+
+4.5
+
+Variables s en booleen, a en entier
+DEBUT
+Ecrire "Etes-vous une femme ?"
+Lire s
+Ecrire "Quel âge avez-vous ?
+Lire a
+Si s 
+Alors
+    Si a > 18 ET a < 35
+    Alors
+        Ecrire "Vous êtes imposable."
+    Sinon
+        Ecrire "Vous êtes imposable."
+    FinSi
+SinonSi a > 20
+    Alors
+        Ecrire "Vous êtes imposable."
+    Sinon
+        Ecrire "Vous êtes imposable."
+FinSi    
+FIN
+
+4.6
+
+Variables P1, P2, P3, P4 en numérique
+Variables C1, C2, C3 en booleen
+DEBUT
+Ecrire "Entrez les résultats de P1, P2, P3 et P4"
+Lire P1, P2, P3, P4
+C1 ← P1 > 50
+C2 ← P1 > 12.5
+C3 ← P1 > P2 ET P1 > P3 ET P1 > P4
+C4 ← P2 > 50 OU P3 > 50 OU P4 > 50
+Si C1 
+Alors   
+    Ecrire "Elu !"
+FinSi
+Si C2 ET C3
+Alors
+    Ecrire "Vous êtes en ballotage favorable!"
+FinSi
+Si C2 ET NON (C3)
+Alors
+    Ecrire "Vous êtes en ballotage défavorable!"
+FinSi
+Si NON (C2) OU C4
+Alors
+    Ecrire "Battu !"
+FinSi
+FIN
+
+4.7
+
+Variables age, anp, nba, fid en entiers
+Variables C1, C2 en booleen
+Variable tarif en caractere
+DEBUT
+Ecrire " Saisissez votre âge, vos années de permis, le nombre d'accidents, et vos années de fidélité :
+Lire age, anp, nba, fid
+C1 ← age < 25
+C2 ← anp < 2
+Si fid < 5
+Alors
+    Si (C1 ET C2 ET nba = 0) OU (C1 ET NON(C2) ET nba = 1) OU (NON(C1) ET C2 ET nba = 1) OU (NON(C1) ET NON(C2) ET nba = 2)
+    Alors
+        tarif ← "Tarif rouge"
+        Ecrire tarif
+    FinSi
+    Si (C1 ET NON(C2) ET nba = 1) OU (NON(C1) ET C2 ET nba = 1) OU (NON(C1) ET NON(C2) ET nba = 1)
+    Alors
+        tarif ← "Tarif orange"
+        Ecrire tarif
+    FinSi
+    Si NON(C1) ET NON(C2) ET nba = 0
+    Alors
+        tarif ← "Tarif vert"
+        Ecrire tarif
+    FinSi
+    Si (C1 ET C2 ET nba = 1) OU (C1 ET NON(C2) ET nba > 1) OU (NON(C1) ET C2 ET nba > 1) OU (NON(C1) ET NON(C2) ET nba > 2)
+    Alors
+        tarif ← "Refusé !"
+        Ecrire tarif
+    FinSi
+Sinon
+    Si (C1 ET C2 ET nba = 0) OU (C1 ET NON(C2) ET nba = 1) OU (NON(C1) ET C2 ET nba = 1) OU (NON(C1) ET NON(C2) ET nba = 2)
+    Alors
+        tarif ← "Tarif orange"
+        Ecrire tarif
+    FinSi
+    Si (C1 ET NON(C2) ET nba = 1) OU (NON(C1) ET C2 ET nba = 1) OU (NON(C1) ET NON(C2) ET nba = 1)
+    Alors
+        tarif ← "Tarif vert"
+        Ecrire tarif
+    FinSi
+    Si NON(C1) ET NON(C2) ET nba = 0
+    Alors
+        tarif ← "Tarif bleu"
+        Ecrire tarif
+    FinSi
+FIN
+
+4.8
+
+Variables jour, mois, annee en entier
+Variables bis en booleen
+Variables C1, C2, C3
+DEBUT
+Ecrire "Veuillez entre le jour, le mois et l'année :"
+Lire jour, mois, annee
+bis ← annee dp 4 ET NON(annee dp 100) OU annee dp 400
+C1 ← mois = 1 OU mois = 3 OU mois = 5 OU mois = 7 OU mois = 8 OU mois = 10 OU mois = 12
+C2 ← mois = 4 OU mois = 6 OU mois = 9 OU mois = 11
+Si ((jour >=1 ET jour <= 31) ET C1) OU ((jour >=1 ET jour <= 30) ET C2) OU ((jour >=1 ET jour <= 29) ET (mois = 2 ET bis)) OU ((jour >=1 ET jour <= 28) ET mois = 2)
+Alors 
+    Ecrire "Date valide !"
+Finsi
+Si 
+Alors 
+    Ecrire "Date invalide !"
+Finsi
+FIN

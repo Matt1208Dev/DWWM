@@ -1,0 +1,170 @@
+
+
+5 _ Les boucles
+
+5.1
+
+Variable nb en entier
+DEBUT
+Ecrire "Entrez un nombre compris entre 1 et 3 :"
+Lire nb
+TantQue nb < 1 ou nb > 3 
+        Ecrire "Chiffre invalide. Entrez un nombre compris entre 1 et 3 :"
+        Lire nb
+FinTantQue
+Ecrire "Chiffre valide !"
+FIN
+
+5.2
+
+Variable nb en entier
+DEBUT
+Ecrire "Entrez un nombre compris entre 10 et 20 :"
+Lire nb
+TantQue nb < 10 OU nb > 20
+        Si nb < 10
+        Alors
+            Ecrire "Plus grand !"
+        FinSi
+        SinonSi nb > 20
+        Alors
+            Ecrire "Plus petit !"
+        FinSi
+        Lire nb
+FinTantQue
+Ecrire "Chiffre valide !"
+FIN
+
+5.3
+
+Variable nb, i en entier
+DEBUT
+i ← 0
+Ecrire "Entrez un nombre :"
+Lire nb
+TantQue i < 10
+    nb ← nb + 1
+    Ecrire nb
+    i ← i + 1
+FIN
+
+5.4
+
+Variable nb, i en entier
+DEBUT
+i ← 0
+Ecrire "Entrez un nombre :"
+Lire nb
+Pour i ← 1 à 10
+    nb ← nb + 1
+    Ecrire nb
+i Suivant
+FIN
+
+5.5
+
+Variables n, i, p en entier
+DEBUT
+Ecrire "Entrez le nombre de départ :"
+Lire n
+i ← 1
+Pour i ← 1 à 10
+    p ← n * i
+    Ecrire n, " x ", i, " = ", p
+i Suivant
+FIN
+
+5.6
+
+Variables n, i, somme en entier
+DEBUT
+Ecrire "Entrez le nombre de départ :"
+Lire n
+Pour i ← 0 à n
+    somme ← somme + 1
+i Suivant
+Ecrire "La somme est égale à : ", somme
+FIN
+
+5.7
+
+Variables n, i, fact en entier
+DEBUT
+Ecrire "Entrez le nombre de départ :"
+Lire n
+Pour i ← 0 à n
+    fact ← fact * i
+i Suivant
+Ecrire "La fact est égale à : ", fact
+FIN
+
+5.8
+
+Variables n, g i, ind en entier
+DEBUT
+i ← 1
+ind ← 0
+Ecrire "Entrez le nombre ", i, " :"
+Lire n
+g ← 0
+Pour i ← 1 à 20
+    Si n > g
+    Alors
+        g ← n
+        ind ← i
+    FinSi
+    Ecrire "Entrez le nombre ", i + 1, " :"
+i suivant
+Ecrire "Le nombre le plus grand est : ", g
+Ecrire " C'était le nombre ", ind
+FIN
+
+5.9
+
+Variables n, g, i ind en entier
+DEBUT
+i ← 1
+ind ← 0
+Ecrire "Entrez le nombre ", i, " :"
+Lire n
+g ← 0
+TantQue n <> 0
+    Si n > g
+    Alors
+        g ← n
+        ind ← i
+    FinSi
+    i ← i + 1
+    Ecrire "Entrez le nombre ", i, " :"
+FinTantQue
+Ecrire "Le nombre le plus grand est : ", g
+Ecrire " C'était le nombre ", ind
+FIN
+
+5.10
+
+Variables prix, tot, arg, reste en entier
+DEBUT
+tot ← 0
+Ecrire "Saisir le prix de l'article :"
+Lire prix
+TantQue prix <> 0
+    tot ← tot + prix
+FinTantQue
+Ecrire "Vous devez ", tot, " euros svp."
+Ecrire "Montant versé"
+Lire arg
+reste ← arg - tot
+TantQue reste > 10
+    Ecrire "10 Euros"
+    reste ← reste - 10 
+FinTantQue
+TantQue reste > 5
+    Ecrire "5 Euros"
+    reste ← reste - 5
+FinTantQue
+TantQue reste >= 1
+    Ecrire "1 Euro"
+    reste ← reste - 1
+FinTantQue
+FIN
