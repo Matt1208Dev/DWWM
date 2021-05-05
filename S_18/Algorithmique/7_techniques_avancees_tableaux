@@ -1,0 +1,108 @@
+
+
+7 _ Les tableaux, techniques avancées
+
+7.1
+
+Tableau V() en numérique
+Variables nb, i, en numérique
+DEBUT
+i ← 0
+consec ← faux
+Ecrire "Combien de valeurs seront saisies ?"
+Lire nb
+Redim V(nb-1)
+Pour i ← 0 à nb - 1
+Ecrire "Saisir un nombre :", i + 1
+Lire V(i)
+i Suivant
+i ← 1
+TantQue V(i) = V(i-1) + 1 ET i < nb-1
+    i ← i + 1
+FinTantQue
+Si V(i) = V(i-1) + 1
+Alors
+    Ecrire "les éléments de ce tableaux sont consécutifs."
+Sinon
+    Ecrire "les éléments de ce tableaux sont consécutifs."
+FIN
+
+7.2
+
+    Tri par Insertion
+Tableau T(N) en numérique
+Variable i, x, y, temp en entier
+DEBUT
+Pour i ← 0 à N-2
+    x ← i
+    Pour y ← x+1 à N
+        Si T(y) > T(x)
+        Alors
+            x ← y
+            
+    i Suivant 
+        temp ← T(y)
+        T(y) ← T(x)
+        T(x) ← temp
+i Suivant
+FIN
+
+    Tri à bulles
+Tableau T(N) en numérique
+Variable temp en numérique
+Variable permute en booleen
+DEBUT
+permute ← Vrai
+TantQue permute
+    permute ← faux
+    Pour i ← 0 à n-1
+    Si T(i) < T(i + 1)
+    Alors
+        temp ← T(i)
+        T(i) ← T(i + 1)
+        T(i + 1) ← temp
+        permute ← vrai
+    FinSi
+    i Suivant
+FinTantQue
+FIN 
+
+7.3
+
+Tableau T(N) en numérique
+Variables i, temp en numérique
+DEBUT
+i ← 0
+Pour i ← 0 à N
+    temp ← T(i)
+    T(i) ← T(N)
+    T(N) ← temp
+    N ← N - 1
+i Suivant
+FIN
+
+7.4
+
+DEBUT
+Ecrire "quel est le rang à supprimer?"
+Lire R
+Pour i ← R à N-1
+    T(i) ← T(i + 1)
+i Suivant
+Redim T(N - 1)
+FIN
+
+7.5
+
+DEBUT
+Ecrire "Quel est le mot à chercher ?"
+Lire mot
+deb ← 0
+fin ← n
+mil ← fin/2
+Pour i ← deb à fin
+    Si mot = t(mil)
+    
+    Si mot < mil
+    Alors 
+FIN

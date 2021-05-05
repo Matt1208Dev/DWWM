@@ -1,3 +1,188 @@
 
 
 6 _ Les tableaux
+
+6.1
+
+Tableau tab(6) en entier
+Variable i en entier
+DEBUT
+Pour i ← 0 à 6
+    tab(i) ← 0
+i Suivant
+FIN
+
+6.2
+
+Tableau voy(5) en caractère
+DEBUT
+voy(0) ← "A"
+voy(1) ← "E"
+voy(2) ← "I"
+voy(3) ← "O"
+voy(4) ← "U"
+voy(5) ← "Y"
+FIN
+
+6.3
+
+Tableau notes(8) en numérique
+Variable i en numérique
+DEBUT
+Pour i ← 0 à 8
+Ecrire "Entrez la note ", i + 1, " :"
+Lire notes(i)
+i Suivant
+FIN
+
+6.4
+
+Cet algorithme va dans un premier temps Déclarer un tableau de 6 valeurs entières.
+Il va ensuite calculer le carré de chaque indice (soit 1, 4, 9, 16, 25) et l'affecter en tant que valeur sur chacun d'entre eux par le biais d'une boucle.
+Ensuite, une deuxième boucle entre en jeu pour afficher chaque valeur du tableau dans l'ordre d'apparition des indices
+
+6.5
+
+Cet algo va produire un tableau de 6 valeurs : 1, 3, 5, 7, 9, 11, 13. Puis va les afficher.
+
+6.6
+
+Cet algo va produire un tableau Suite de 8 valeurs : 1, 1, 2, 3, 5, 8, 13, 21. Puis va les afficher.
+
+6.7
+
+Tableau notes(8) en numérique
+Variable i, som, moy en numérique
+DEBUT
+som ← 0
+Pour i ← 0 à 8
+Ecrire "Entrez la note ", i + 1, " :"
+Lire notes(i)
+som = som + notes(i)
+i Suivant
+moy ← som / 9
+Ecrire "La moyenne est de :", moy
+FIN
+
+6.8
+
+Tableau nombres() en numérique
+Variables nb, i, neg, pos en numérique
+DEBUT
+Ecrire "Combien de valeurs seront saisies ?"
+Lire nb
+Redim nombres(nb-1)
+neg ← 0
+pos ← 0
+Pour i ← 0 à nb - 1
+Ecrire "Saisir un nombre :", i + 1
+Lire nombres(i)
+Si nombres(i) < 0
+Alors
+    neg ← neg + 1
+Sinon
+    pos ← pos + 1
+i Suivant
+Ecrire "Il y a ", neg, " nombres négatifs et ", pos, " nombres positifs."
+FIN
+
+6.9
+
+Tableau tab(n - 1) en numérique
+Variables som, i en numérique
+DEBUT
+som ← 0
+Pour i ← 0 à n - 1
+som ← som + tab(i)
+i Suivant
+Ecrire "Somme égale à : ", som
+FIN
+
+6.10
+
+Tableaux Tableau1(7), Tableau2(7), Tableau3(7) en entiers
+Variable i en entier
+DEBUT
+Pour i ← 0 à 7
+Tableau3(i) ← Tableau1(i) + Tableau2(i)
+i Suivant
+FIN
+
+6.11
+
+Tableaux T1(), T2() en entier
+Variable m, n, p1, sch en entier
+Redim T1(m-1), T2(n-1)
+p1 ← 0
+sch ← 0
+Pour n ← 0 à n - 1
+    Pour m ← 0 à m-1
+        p1 ← p1 + T1(m) *T2(n)
+    i Suivant
+    sch ← sch + p1
+i Suivant
+Ecrire le Schtroumpf sera : ", sch
+
+6.12
+
+Tableau nombres() en numérique
+Variables nb, i en numérique
+DEBUT
+Ecrire "Combien de valeurs seront saisies ?"
+Lire nb
+Redim nombres(nb-1)
+Pour i ← 0 à nb - 1
+Ecrire "Saisir un nombre :", i + 1
+Lire nombres(i)
+Pour i ← 0 à nb - 1
+nombres(i) ← nombres(i) + 1
+Ecrire nombres(i)
+i Suivant
+FIN
+
+6.13
+
+Tableau nombres() en numérique
+Variables nb, i, pg, pgind en numérique
+DEBUT
+pg ← 0
+Ecrire "Combien de valeurs seront saisies ?"
+Lire nb
+Redim nombres(nb-1)
+Pour i ← 0 à nb - 1
+Ecrire "Saisir un nombre :", i + 1
+Lire nombres(i)
+Pour i ← 0 à nb - 1
+Si nombres(i) >= 0 ET nombres(i) > pg
+Alors
+    pg ← nombres(i)
+    pgind ← i
+FinSi
+i Suivant
+Ecrire "Le nombre le plus grand est : ", pg
+Ecrire "Ce nombre était le nombre n° : ", pgind
+
+6.14
+
+Tableau notes() en numérique
+Variables nb, i, som, moy, supmoy en numérique
+DEBUT
+Ecrire "Combien de valeurs seront saisies ?"
+Lire nb
+Redim notes(nb-1)
+Pour i ← 0 à nb - 1
+Ecrire "Saisir un nombre :", i + 1
+Lire notes(i)
+som ← 0
+Pour i ← 0 à nb - 1
+som ← som + notes(i)
+i Suivant
+moy ← som / nb
+supmoy ← 0
+Pour i ← 0 à nb - 1
+Si notes(i) >= moy
+Alors
+    supmoy ← supmoy + 1
+FinSi
+i Suivant
+Ecrire "Nombre de notes supérieures à la moyenne : ", supmoy
