@@ -1,0 +1,159 @@
+
+
+8 _ Les tableaux multidimensionnels
+
+8.1
+
+Tableau T(5,12)
+Variable i, j en entiers
+DEBUT
+Pour i ← 0 à 5
+    Pour j ← 0 à 12
+    T(i,j) ← 0
+    j Suivant
+i Suivant
+FIN
+
+8.2
+
+cet algo va produire un tableau :
+
+X ( 0, 0) ← 1
+X ( 0, 1) ← 2
+X ( 0, 2) ← 3
+X ( 1, 0) ← 4
+X ( 1, 1) ← 5
+X ( 1, 2) ← 6
+
+8.3
+
+Meme résultat que le tableau précédent mais c'est l'affichage qui va changer: 
+
+X(0, 0) ← 1
+X(1, 0) ← 4
+X(0, 1) ← 2
+X(1, 1) ← 5
+X(0, 2) ← 3
+X(1, 2) ← 6
+
+8.4
+
+T(0,0) ← 0
+T(0,1) ← 1
+T(1,0) ← 1
+T(1,1) ← 2
+T(2,0) ← 2
+T(2,1) ← 3
+T(3,0) ← 3
+T(3,1) ← 4
+
+8.5
+
+T(0,0) ← 1
+T(0,1) ← 2
+T(1,0) ← 3
+T(1,1) ← 4
+T(2,0) ← 5
+T(2,1) ← 6
+T(3,0) ← 7
+T(3,1) ← 8
+
+T(0,0) ← 1
+T(0,1) ← 5
+T(1,0) ← 2
+T(1,1) ← 6
+T(2,0) ← 3
+T(2,1) ← 7
+T(3,0) ← 4
+T(3,1) ← 8
+
+8.6
+
+Tableau T(12,8) en numeriques
+Variable i, j, imax, jmax, pg en numeriques
+DEBUT
+Pour i ← 0 a 12
+    Pour j ← 0 a 12
+    Si T(i,j) > T(imax, jmax)
+    Alors
+        imax ← i
+        jmax ← j
+        pg ← T(imax, jmax)
+        Finsi
+    j Suivant
+i Suivant
+Ecrire "La plus grande valeur est : ", pg
+Ecrire "Elle se situe à l'indice T(", imax", ", jmax")"
+FIN
+
+8.7
+
+Tableau D(9,9)
+Variables n, b, pion, mouv en entier
+Variable jeu, pospion en booleen
+DEBUT
+Pour i ← 0 à 3
+jeu ← (i = 0 OU i dp 2) ET (j <> 0 ET NON(i dp 2))
+    Pour j ← 0 à 9
+    Si jeu
+    Alors 
+        D(i,j) ← X
+    Sinon
+        D(i,j) ← 0
+    Finsi
+    j Suivant
+i Suivant
+Pour i ← 6 à 9
+jeu ← (i = 0 OU i dp 2) ET (j <> 0 ET NON(i dp 2))
+    Pour j ← 0 à 9
+    Si jeu
+    Alors 
+        D(i,j) ← X
+    Sinon
+        D(i,j) ← 0
+    Finsi
+    j Suivant
+i Suivant
+
+pion ← D(i,j)
+Ecrire "Dans quel case est le pion à jouer ?"
+Lire i,j
+Tantque Non(jeu)
+    Ecrire "Saisie incorrect. Dans quel case est le pion à jouer ?"
+    Lire i,j
+FinTantQue
+
+Ecrire "Quel est le mouvement à effectuer : 0 (en haut à gauche), 1 (en haut à droite), 2 (en bas à gauche), 3 (en bas à droite) :"
+Lire mouv
+
+Si mouv = 0
+    Alors
+        i ← i - 1
+        j ← j - 1
+SinonSi mouv = 1
+    Alors
+        i ← i - 1
+        j ← j + 1
+SinonSi mouv = 2
+    Alors
+        i ← i + 1
+        j ← j - 1
+SinonSi mouv = 1
+    Alors
+        i ← i + 1
+        j ← j + 1
+FinSi
+Si i < 0 ou i > 9 ou j < 0 ou j > 9
+Alors
+Ecrire "Déplacement impossible !"
+Sinon D(i,j) ← X
+FinSi
+
+Pour i ← 0 à 9
+    Pour j ← 0 à 9
+    Ecrire D(i,j)
+    j Suivant
+i Suivant
+FIN
+
+VOIR correction pour cet exo
