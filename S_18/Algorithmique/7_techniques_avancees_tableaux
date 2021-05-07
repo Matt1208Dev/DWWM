@@ -97,12 +97,79 @@ FIN
 DEBUT
 Ecrire "Quel est le mot à chercher ?"
 Lire mot
+present
 deb ← 0
 fin ← n
-mil ← fin/2
+mil ← (deb + fin)/2
 Pour i ← deb à fin
     Si mot = t(mil)
-    
-    Si mot < mil
-    Alors 
+    Alors present = vrai
+    SinonSi mot < t(mil)
+    fin ← mil - 1
+    Sinon deb ← mil + 1
+FIN
+
+7.6
+
+Tableau Chiffres() en numérique
+Variables nb, i, j, doublon en numérique
+DEBUT
+i ← 0
+doublon ← 0
+j ← i
+Ecrire "Combien de valeurs seront saisies ?"
+Lire nb
+Redim Chiffres(nb-1)
+Ecrire "Saisir un nombre :", i + 1
+Lire Chiffres(i)
+Pour i ← 1 à nb -1
+Ecrire "Saisir un nombre :", i + 1
+Lire Chiffres(i)
+    Pour j ← 1 à nb - 1
+    Si Chiffres(i + 1) = Chiffres(i)
+    Alors
+        doublon ← doublon + 1
+    FinSi
+    i Suivant
+i Suivant
+Si doublon > 0
+Alors
+    Ecrire "Il y a un ou plusieurs doublons"
+Sinon
+    Ecrire "Il n'y a pas de doublons"
+FinSi
+FIN
+
+7.7
+
+Tableaux A(n), B(n-1), C() en numérique
+Variables ia, ib, ic en numérique
+variable Afini, Bfini en booleen
+DEBUT
+Afini ← faux
+Bfini ← faux
+ia ← 0
+ib ← 0
+ic ← -1
+TantQue NON (Afini) OU NON (Bfini)
+    ic ← ic + 1
+    Redim C(ic)
+    Si Afini ou A(ia) > B(ib)
+    Alors
+        C(ic) ← B(ib)
+        ib ← ib + 1
+        Si ib > n
+        Alors 
+            Bfini ← vrai
+        FinSi
+    FinSi
+    Si Bfini ou B(ib) > A(ia)
+    Alors
+        C(ic) ← A(ia)
+        ia ← ia + 1
+        Si ia > n
+        Alors 
+            Afini ← vrai
+        FinSi
+    FinSi
 FIN
