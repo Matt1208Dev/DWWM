@@ -1,0 +1,20 @@
+LA logique de remplissage est la même que pour la création des tables.
+Les tables contenant des clés étrangères nécessiteront les informations des tables liées pour le remplissage de leur lignes.
+
+La logique de remplissage a adopter est la suivante :
+
+1/ remplir en premier les tables qui ne contiennent pas de clés étrangères.
+2/ remplir ensuite les tables qui utilisent des clés étrangères menant sur les tables déjà créees.
+3/ même continuité en veillant à ce que la/les clés étrangères de la table que l'on rempli fait référence à une table déjà existante.
+
+Dans notre cas :
+
+1/ posts
+2/ employees
+3/ countries
+4/ categories
+5/ suppliers
+6/ products
+7/ customers
+8/ orders
+9/ orders details
