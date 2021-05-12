@@ -1,0 +1,175 @@
+
+
+11 _ Procédures et fonctions
+
+11.1
+
+Fonction Somme(nb1, nb2, nb3, nb4, nb5) en Numérique
+Renvoyer nb1 + nb2 + nb3 + nb4 + nb5
+FIN
+
+11.2
+
+Fonction Nbvoyelles(mot en caractère) en Numérique
+Variable char en caractère
+Variables i, nbvoy en entier
+nbvoy ← 0
+     Pour i ← 0 à Len(mot)
+          char ← Mid(mot, i, 1)
+          Si Trouve("aeiouy", char) <> 0
+          Alors
+               nbvoy ← nbvoy + 1
+          Finsi
+     i Suivant
+Renvoyer nbvoy
+FIN
+
+11.3
+
+Fonction Trouve(mot en caractère, mot2 en caractère) en Numérique
+Variable i en entier
+Variable trouve en booleen
+trouve ← faux
+i ← 0
+TantQue i < Len(mot) - Len(mot2) et NON(trouve)
+     Si Mid(mot, i, Len(mot2)) = mot2
+     Alors
+          trouve ← vrai
+          Retourner i
+     Sinon
+          i ← i + 1
+     FinSi
+FinTantQue
+Si NON(trouve)
+Alors
+     i ← -1
+     Retourner i
+FinSi
+FIN
+
+11.4
+
+Fonction Purge(mot en caractère, mot2 en caractère) en caractère
+variable new en caractère
+variable i en entier
+i ← 0
+TantQue i < Len(mot) - Len(mot2) ET Mid(mot, i, 1) <> mot2
+     new ← new & Mid(mot, i, 1)
+     i ← i + 1
+FinTantQue
+     Retourner new
+FIN
+
+11.5
+
+Fonction Purge(mot en caractère, mot2 en caractère) en caractère
+variable new, temp en caractère
+variable i en entier
+i ← 0
+temp ← Mid(mot, i , Len(mot2))
+TantQue i < Len(mot) - Len(mot2) ET temp <> mot2
+     new ← new & temp
+     i ← i + 1
+FinTantQue
+     Retourner new
+FIN
+
+11.6
+
+Procédure tritab(a en tableau, b en entier) en numérique
+variable i en entier
+variable temp en numérique
+Pour i ← 1 à b - 1
+     Si a(i) < a(i - 1)
+     Alors
+          temp ← a(i)
+          a(i) ← a(i - 1)
+          a(i - 1) ← temp
+     FinSi
+i Suivant
+FinProcédure
+
+11.7
+
+Fonction veriftritab(a en tableau) en numérique
+variable trie en caractère
+variable i en entier
+trie ← a(i) > a(i - 1)
+i ← 1
+TantQue i < Len(a) et trie
+     trie ← a(i) > a(i - 1)
+i Suivant
+Retourner trie
+Fin
+
+11.8
+
+Procédure Inversion(a en numérique par référence, b en numérique par référence)
+Variable temp en numérique
+temp ← a
+a ← b
+b ← temp
+FinProcédure
+
+11.9
+
+Procédure tritab(a en tableau, b en entier, c en booleen) en numérique
+variable i en entier
+variable temp en numérique
+Si c 
+Alors
+Pour i ← 1 à b - 1
+     Si a(i) < a(i - 1)
+     Alors
+          temp ← a(i)
+          a(i) ← a(i - 1)
+          a(i - 1) ← temp
+     FinSi
+i Suivant
+Sinon
+Pour i ← 1 à b - 1
+     Si a(i) > a(i - 1)
+     Alors
+          temp ← a(i)
+          a(i) ← a(i - 1)
+          a(i - 1) ← temp
+     FinSi
+i Suivant
+FinProcédure
+
+11.10
+
+Fonction TousDifferents(a(8, 8) en numérique) en booleen
+Pour i ← 0 à 7
+     Pour j ← i + 1 à 8
+     Si a(i) = a(j)
+     Alors
+          Renvoyer faux
+     FinSi
+     j Suivant
+i Suivant
+Renvoyer vrai
+FinFonction
+
+Procédure RemplitGrille(8, 8) en numérique
+Pour i ← 0 à 8
+     Pour j ← 0 à 8 
+     a(i) ← Ent(Alea()*8) + 1
+     j Suivant
+i Suivant
+FinProcédure
+
+Fonction Veriflignes(a(8, 8) en numérique) en booleen
+i ← 0
+j ← i
+Pour i ← 0 à 8
+     Pour j ← 0 à 8
+     Ligne(j) ← Grille(i, j)
+     Si NON TousDifferents(Ligne(j)) 
+     Alors
+          Renvoyer faux
+     FinSi
+     j Suivant
+i Suivant
+Renvoyer vrai
+FinTantQue

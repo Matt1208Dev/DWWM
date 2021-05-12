@@ -1,0 +1,304 @@
+
+
+10 _ Les fichiers
+
+10.1
+
+Cet algo affiche le fichier exemple.txt.
+
+10.2
+
+Variable Truc en Caractère
+Début
+Ouvrir "Exemple.txt" sur 5 en Lecture
+Tantque Non EOF(5)
+     LireFichier 5, Truc
+     Pour i ← 0 à Len(Truc)
+     let ← Mid(Truc, i, 1)
+     Si let = "/"
+     Alors
+          Let ← " "
+          Ecrire Let
+     Sinon
+          Ecrire let
+     FinSi
+     i Suivant
+FinTantQue
+Fermer 5
+Fin
+
+10.3
+
+Ouvrir "carnet.txt" sur 5 en Ajout
+Variable Truc en Caractère
+Variables Nom*20, Prénom*15, Tel*10, Mail*20 en Caractère
+DEBUT
+Ecrire "Entrez le nom : "
+Lire Nom
+Ecrire "Entrez le prénom : "
+Lire Prénom
+Ecrire "Entrez le téléphone : "
+Lire Tel
+Ecrire "Entrez le nom : "
+Lire Mail
+Truc ← Nom & Prénom & Tel & Mail
+EcrireFichier 3, Truc
+FIN
+
+10.4
+
+Structure rep
+     Nom*20, 
+     Prénom*15, 
+     Tel*10, 
+     Mail*20 
+     en Caractère
+Tableau carnet en rep
+Variable ligncar, new en rep
+Variable insere en booleen
+variable i, j en entier
+Ouvrir "adresses.txt" sur 5 en Lecture
+DEBUT
+Ecrire "Entrez le nom : "
+Lire new.Nom
+Ecrire "Entrez le prénom : "
+Lire new.Prénom
+Ecrire "Entrez le téléphone : "
+Lire new.Tel
+Ecrire "Entrez le nom : "
+Lire new.Mail
+insere ← faux
+i ← -1
+TantQue NON EOF(5)
+     i ← i + 1
+     Redim carnet(i)
+     LireFichier 5, ligncar
+     Si ligncar.Nom > new.Nom ET NON insere
+     Alors carnet(i) ← new
+     insere ← variable
+     i ← i + 1
+     Redim carnet(i)
+     FinSi
+     carnet(i) ← ligncar
+FinTantQue
+Fermer 5
+Si NON insere
+     Alors
+          i ← i + 1
+          Redim carnet(i)
+          carnet(i) ← new
+          insere ← vrai
+FinSi
+Ouvrir adresses.txt sur 5 pour Ecriture
+Pour j ← 0 à i
+     EcrireFichier 5, carnet(j)
+     j Suivant
+Fermer 5
+FIN
+
+10.5
+
+Ouvrir adresses.txt sur 1 pour Lecture
+Tableau carnet en rep
+Variable ligncar, old, new en caractères
+DEBUT
+Ecrire "Quel est le nom à modifier ?"
+Lire old.Nom
+Ecrire "Quel est le nom de remplacement ?"
+Lire new.Nom
+remplace ← faux
+i ← i - 1
+TantQue NON EOF(1)
+     i ← i + 1
+     Redim carnet(i)
+     LireFichier 1, ligncar
+     Si ligncar.nom = old.Nom
+     Alors
+          carnet ← ligncar
+          carnet.nom ← new
+          remplace ← vrai
+     FinSi
+     carnet(i) ← ligncar 
+     Fermer 1
+FinTantQue
+Ouvrir adresses.txt sur 1 pour Ecriture
+     Pour j ← 0 à i
+     EcrireFichier 1, carnet(j)
+     j Suivant
+     Fermer 1
+Si remplace
+Alors
+     Ecrire "modification réussie!"
+Sinon 
+     Ecrire "Nom inconnu dans le fichier!"
+FinSi
+FIN
+
+10.6
+
+Structure rep 
+     Nom en Caractère * 20
+     Prénom en Caractère * 15
+     Tel en caractère * 10
+     Mail en Caractère * 20
+Fin Structure
+Tableau carnet() en rep
+Variables posmin en rep
+Variables i, j en Numérique
+Debut
+Ouvrir adresses.txt sur 5 pour Lecture
+i ← i - 1
+TantQue NON EOF(5)
+     i ← i + 1
+     LireFichier 5, carnet(i)
+FinTantQue
+Fermer 5
+j ← 0
+Pour j ← j + 1 à i
+     Si carnet(j + 1).Nom < carnet(j).Nom
+     Alors
+          temp ← carnet(j + 1)
+          carnet(j + 1) ← carnet(j)
+          carnet(j) ← temp
+     FinSi
+     j Suivant
+FinTantQue
+Ouvrir adresses.txt sur 5 pour Ecriture
+j ← 0
+Pour j ← 0 à i
+     EcrireFichier 5, carnet(j)
+j Suivant
+Fermer 5
+FIN
+
+10.7
+
+DEBUT
+Ouvrir Toto.txt sur 1 pour Lecture
+Ouvrir Tutu.txt sur 2 pour Ajout
+
+TantQue NON EOF(1)
+     LireFichier 1, ligne
+     EcrireFichier 2, ligne
+
+FinTantQue
+Fermer 1
+Ouvrir Tata.txt sur 1 pour Lecture
+TantQue NON EOF(1)
+     LireFichier 1, ligne
+     EcrireFichier 2, ligne
+FinTantQue
+Fermer 1
+Fermer 2
+FIN
+
+10.8
+
+
+DEBUT
+Ouvrir adresse.txt sur 1 pour Lecture
+i ← -1
+TantQue NON EOF(1)
+     i ← i + 1
+     Redim carnet(i)
+     LireFichier 1, carnet(i)
+     Fermer 1
+FinTantQue
+j ← 0
+k ← 0
+mail ← carnet(j).mail
+arob ← 0
+Pour j ← 0 à i
+     TantQue k < Len(mail)
+     Si Mid(mail, k, 1) = "@"
+     Alors
+          arob ← arob + 1
+     FinSi
+     k ← k + 1
+     FinTantQue
+     Si arob = 0 ou arob > 1
+     Alors mail ← ""
+     FinSi
+j Suivant
+
+Ouvrir adresse.txt sur 1 pour Ecriture
+TantQue EOF(1)
+     LireFichier 1, carnet
+Fermer 1
+FIN
+
+Correction du 10.8
+On va éliminer les mauvaises entrées dès la recopie : si l'enregistrement ne présente pas un mail valide, on l'ignore, sinon on le copie dans le tableau.
+Structure Bottin
+  Nom en Caractère * 20
+  Prénom en Caractère * 15
+  Tel en caractère * 10
+  Mail en Caractère * 20
+Fin Structure
+Tableau Mespotes() en Bottin
+Variable MonPote en Bottin
+Variables i, j en Numérique
+Debut
+On recopie "Adresses" dans MesPotes en testant le mail...
+Ouvrir "Adresse.txt" sur 1 pour Lecture
+i ← -1
+Tantque Non EOF(1)
+  LireFichier 1, MonPote
+  nb ← 0
+  Pour i ← 1 à Len(MonPote.Mail)
+    Si Mid(MonPote.Mail, i, 1) = "@" Alors
+      nb ← nb + 1
+    FinSi
+  i suivant
+  Si nb = 1 Alors
+    i ← i + 1
+    Redim MesPotes(i)
+    MesPotes(i) ← MonPote
+  FinSi
+FinTantQue
+Fermer 1
+On recopie ensuite l'intégralité de Fic dans "Adresse"
+Ouvrir "Adresse.txt" sur 1 pour Ecriture
+Pour j ← 0 à i
+  EcrireFichier 1, MesPotes(j)
+j Suivant
+Fermer 1
+Fin
+
+10.9
+
+Structure ca
+     nom*20
+     montant*10
+Fin Structure
+Tableau Ventes, Resultats en ca
+variables nom, montant, ligne en ca
+variables i, j en entier
+DEBUT 
+Ouvrir ventes.txt sur 1 pour Lecture
+i ← i - 1
+TantQue EOF(1)
+     i ← i + 1
+     LireFichier 1, ligne
+     Pour i ← 0 à Len(Resultats)
+     Si i = 0 
+     Alors
+          Redim Resultats(i)
+          Resultats(i) = ligne
+     FinSi
+     Si ligne.nom = Resultats(i).nom
+     Alors
+          Resultats(i).montant ← Resultats(i).montant + ligne.montant
+     Sinon
+          Redim resultats(i)
+          Resultats(i) ← ligne
+     FinSi
+     i Suivant
+FinTantQue
+Fermer 1
+
+Pour j ← 0 à Len(Resultats)
+     Ecrire resultats(j)
+     j Suivant
+
+FIN

@@ -1,0 +1,226 @@
+
+
+9 _ Les fonctions prédéfinies
+
+9.1
+
+Sin(A) – Sin(D) D est un caractère donc opération impossible
+Cos(Sin(A)  car il manque une parenthèse
+
+9.2
+
+Variable string en caractère
+Variable length en entier
+DEBUT
+Ecrire "Entrez un mot :"
+Lire string
+length ← Len(string)
+Ecrire "Nombre de caractère : ", length
+FIN
+
+9.3
+
+Variable string, space en caractère
+Variable count en entier
+DEBUT
+Ecrire "Entrez une phrase :"
+Lire string
+space ← " "
+count ← 0
+Pour i ← 0 à Len(string)
+    comp ← Mid(string, i, 1)
+    Si comp = space
+    Alors
+        count ← count + 1
+    Finsi
+i Suivant
+Ecrire "Nombre de mots contenus dans cette phrase : ", count + 1
+FIN
+
+9.4
+
+Tableau V(5) en caractère
+Variable string en caractère
+Variable nb en entier
+DEBUT
+Ecrire "Entrez une phrase :"
+Lire string
+V ← (a, e, i, o, u, y)
+nb ← 0
+Pour i ← 0 à Len(string)
+    Pour j ← 0 à 5)
+    Si Mid(string, i, 1) = V(j)
+    Alors
+        nb ← nb + 1
+    Finsi
+    j Suivant
+i Suivant
+Ecrire "Nombre de voyelles contenues dans cette phrase : ", voyelles
+
+9.5
+
+Variable string, newString en caractère
+Variable rang en entier
+DEBUT
+Ecrire "Entrez une phrase :"
+Lire string
+Ecrire "Entrez le rang du caractère à supprimer :"
+Lire rang
+newString ← Left(string, rang-1) & Right(string, rang+1)
+Ecrire newString
+FIN
+
+9.6
+
+Version ASCII
+Variable string, temp, code en caractère
+DEBUT
+Ecrire "Entrez une phrase :"
+Lire string
+code ← ""
+Pour i ← 1 à Len(string)
+    temp ← Mid(string, i, 1)
+    Si temp <> "z"
+    Alors
+    code ← code & Chr(Asc("temp") + 1)
+    Sinon
+    code ← code & "a"
+i Suivant
+Ecrire "la phrase cryptographié obtenue est : ", code
+FIN
+
+Version string
+Variable string, alpha, code en caractère
+Variable char, cpos en entier
+DEBUT
+Ecrire "Entrez une phrase :"
+Lire string
+alpha ← "ABCDEFGHIJKLMOPQRSTUVWXYZ"
+code ← ""
+Pour i ← 1 à Len(string)
+    char ← Mid(string, i, 1)
+    cpos ← Trouve(alpha, char)
+    Si char <> "Z"
+    Alors
+        code ← code & Mid(alpha, cpos + 1, 1)
+    Sinon
+        code ← code & "A"
+    Finsi
+i Suivant
+Ecrire "la phrase cryptographié obtenue est : ", code
+FIN
+
+9.7
+
+Version string
+Variable string, alpha, code en caractère
+Variable decal, char, cpos en entier
+DEBUT
+Ecrire "Entrez une phrase :"
+Lire string
+Ecrire "Quel est le décalage à utiliser ?"
+Lire decal
+alpha ← "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+code ← ""
+Pour i ← 1 à Len(string)
+    char ← Mid(string, i, 1)
+    cpos ← Trouve(alpha, char)
+    Si cpos + nb > Len(alpha)
+    Alors
+        code ← code & Mid(alpha, (cpos + nb - Len(alpha)), 1)
+    Sinon
+        code ← code & Mid(alpha, cpos + nb, 1)
+    Finsi
+i Suivant
+Ecrire "la phrase cryptographié obtenue est : ", code
+FIN
+
+9.8
+
+Version string
+Variable string, alpha, keyCrypt, code en caractère
+Variable char, cpos en entier
+DEBUT
+Ecrire "Entrez une phrase :"
+Lire string
+Ecrire "Entrez les 26 caractères de la clé de cryptage :"
+Lire keyCrypt
+alpha ← "ABCDEFGHIJKLMOPQRSTUVWXYZ"
+code ← ""
+Pour i ← 1 à Len(string)
+    char ← Mid(string, i, 1)
+    cpos ← Trouve(alpha, char)
+    code ← code && Mid(keyCrypt, cpos, 1)
+i Suivant
+Ecrire "la phrase cryptographié obtenue est : ", code
+FIN
+
+9.9
+
+Variable alpha, cle, message, code en caractère
+Variables i, j, pos, flag en chiffres
+DEBUT
+alpha ← "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+Ecrire "Entrez la cle :"
+Lire cle
+Ecrire "Entrez le message à coder : "
+Lire message
+i ← 1
+j ← 1 
+code ← ""
+TantQue i <= Len(message) 
+    pos ← Trouve(alpha, Mid(message, i, 1))
+    flag ← Trouve(alpha, Mid(cle, j, 1))
+    Si flag + pos > Len(alpha)
+    Alors
+        code ← code & Mid(alpha, (flag + pos - Len(alpha)), 1)
+    Sinon
+        code ← code & Mid(alpha, flag + pos - 1, 1)
+    Finsi
+    j ← j + 1
+    Si j > Len(cle)
+    Alors
+        j ← 1
+    FinSi
+    i ← i + 1
+FinTantQue
+FIN
+
+9.10
+
+Variable nb en entier
+DEBUT
+Ecrire "Saisir un numbre entier :"
+Lire nb
+Si Mod(nb,2) = 0
+Alors 
+    Ecrire "Ce nombre est pair!"
+Sinon 
+    Ecrire "Ce nombre est impair!"
+FIN
+
+9.11
+
+0 =< Glup < 2
+
+    Alea()*2
+
+–1 =< Glup < 1
+
+    Alea()*2 - 1
+
+1,35 =< Glup < 1,65
+
+    Alea()*0,29 + 1,35
+
+Glup émule un dé à six faces
+
+    Alea()*5 + 1
+
+–10,5 =< Glup < +6,5
+
+    Alea()*16,9 - 10,5
+
+Glup émule la somme du jet simultané de deux dés à six faces
+
+    Alea()*5 + Alea()*5 + 2
