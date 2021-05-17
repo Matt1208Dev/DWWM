@@ -164,8 +164,8 @@ i ← 0
 j ← i
 Pour i ← 0 à 8
      Pour j ← 0 à 8
-     Ligne(j) ← Grille(i, j)
-     Si NON TousDifferents(Ligne(j)) 
+     Ligne(j) ← a(i, j)
+     Si NON TousDifferents(Ligne()) 
      Alors
           Renvoyer faux
      FinSi
@@ -173,3 +173,26 @@ Pour i ← 0 à 8
 i Suivant
 Renvoyer vrai
 FinTantQue
+FinFonction
+
+Fonction Verifcolonnes
+i ← 0
+j ← i
+Pour j ← 0 à 8
+     Pour i ← 0 à 8
+     Colonne(i) ← a(i, j)
+     Si NON TousDifferents(Colonne()) 
+     Alors
+          Renvoyer faux
+     FinSi
+     i Suivant
+j Suivant
+Renvoyer vrai
+FinTantQue
+FinFonction
+
+Fonction VerifSousGrilles
+i ← 0 à 8, pas de 3
+     j ← 0 à 2
+          
+Voir correction de cet exo
