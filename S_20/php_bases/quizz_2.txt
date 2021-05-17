@@ -1,0 +1,8 @@
+
+Q1   a
+Q2   a
+Q3   b
+Q4   a
+Q5   d
+Q6   b
+Q7   b
