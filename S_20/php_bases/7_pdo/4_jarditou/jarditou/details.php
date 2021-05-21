@@ -39,7 +39,8 @@ catch (Exception $e) {
                     <div class="mt-3 d-flex justify-content-center">
                         <!-- <label class="form-label" for="pro_photo">Photo :</label>
                         <input class="form-control mt-2" type="text" name="pro_photo" value="<?php //echo $row->pro_photo ?>" disabled> -->                    
-                        <img src="<?= $row->pro_photo; ?>" alt="" srcset="" width= 300>
+                        <img  alt="photo du produit <?= $row->pro_libelle; ?>" src="public/images/<?= $row->pro_id ?>.<?= $row->pro_photo ?>" width=300>
+
                     </div>
                     <div class="mt-3">
                         <label class="form-label" for="pro_ref">Référence :</label>

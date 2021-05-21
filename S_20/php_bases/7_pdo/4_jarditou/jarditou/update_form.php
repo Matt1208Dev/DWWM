@@ -39,8 +39,11 @@ catch (Exception $e) {
                     <div class="mt-3">
                        <!-- <label class="form-label" for="pro_photo">Photo :</label>
                         <input class="form-control mt-2" type="text" name="pro_photo" value="<?php //echo $row->pro_photo ?>" > -->
-                        <label class="form-label" for="img-aramis">Ajouter une photo de l'article :</label>
-                        <input class="form-control mt-2" type="file" id="pro_photo" name="pro_photo" value=""><?php if(isset($pro_photo)){echo $pro_photo;}?>
+                        <label class="form-label" for="img-aramis">Ajouter/remplacer la photo de l'article :<br>ATTENTION : toute nouvelle image écrasera la précédente.</label>
+                        <input class="form-control mt-2" type="file" id="pro_photo" name="pro_photo" value="<?php if(isset($row->pro_photo)){echo $row->pro_photo;}?>"><?php if(isset($row->pro_photo)){echo $row->pro_photo;}?>
+                        <p class="my-3">Photo actuelle du produit :</p>
+                        <img  alt="photo du produit <?= $row->pro_libelle; ?>" src="public/images/<?= $row->pro_id ?>.<?= $row->pro_photo ?>" width=140>
+
                     </div>
                     <div class="mt-3">
                         <label class="form-label" for="pro_ref">Référence :</label>
