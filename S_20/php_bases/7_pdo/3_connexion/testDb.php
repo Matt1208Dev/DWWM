@@ -16,7 +16,7 @@
 /* Ajoutons ici notre bloc d'exécution de la requête,
 * Ainsi, elle est englobée dans le reste du code PHP
 */
-$requete = "SELECT * FROM produits WHERE pro_id = 7";
+$requete = "SELECT * FROM produits";
 $result = $db->query($requete);
 $produit = $result->fetch(PDO::FETCH_OBJ);
 $result->closeCursor();   
