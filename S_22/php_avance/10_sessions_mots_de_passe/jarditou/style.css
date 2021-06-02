@@ -1,0 +1,18 @@
+#table 
+{
+    max-width: max-content;
+}
+
+.body-background{
+    background: rgb(38,235,182);
+    background: linear-gradient(162deg, rgba(38,235,182,1) 0%, rgba(0,67,208,1) 88%);
+}
+
+.text-ds{
+    font-family: 'Satisfy', cursive;
+}
+
+.button-grad{
+    background: rgb(38,235,182);
+    background: linear-gradient(162deg, rgba(38,235,182,1) 0%, rgba(0,67,208,1) 88%);
+}
