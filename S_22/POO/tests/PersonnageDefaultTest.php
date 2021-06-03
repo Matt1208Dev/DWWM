@@ -4,7 +4,7 @@ require_once "C:/wamp64/www/POO/classes/PersonnageDefault.class.php";
 
 use PHPUnit\Framework\TestCase; // Charge le framework PhpUnit
 
-class PersonnageTest extends TestCase
+class PersonnageDefaultTest extends TestCase
 {   
     public function isPropertyPrivate($instance, $propertyName){
         $reflector = new \ReflectionProperty($instance, $propertyName);
