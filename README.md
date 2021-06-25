@@ -1,6 +1,6 @@
 # DWWM
 
-Dans ce repository, tous mes exos et travaux effectué durant ma formation pour le titre professionnel de Développeur Web et Web Mobile.
+Dans ce repository, tous mes exos et travaux effectués durant ma formation pour le titre professionnel de Développeur Web et Web Mobile.
 
 /
 
