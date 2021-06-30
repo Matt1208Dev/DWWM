@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Exemple 2</title>
+</head>
+<body>
+
+    <div class="container d-flex col-md-6 flex-column ">
+        <select class="form-select mt-2 bg-white border-3 my-auto" id="select1"></select>
+        <select class="form-select mt-2 bg-white border-3 my-auto" id="select2">
+            <option value=""> -- Choisir un département -- </option>
+
+        </select>
+    </div>  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() 
+        {
+            $("#select1").load("listeoptions1.php"); // On charge la page qui envoie la requête SQL à la BDD
+        
+                $.post({ // On récupère les données de la requête dans data
+                    url: "listeoptions1.php", 
+                    dataType: "json",
+                    success: function(data) 
+                    {			
+                        var selectReg = '<option value=""> -- Choisir une région -- </option>';
+                        
+                        $.each(data, function(key, val) { // On utilise les données de la requête pour générer nos choix du select
+                            selectReg += "<option value=\"" + val.reg_id + "\">" + val.reg_id+" | "+ val.reg_v_nom +" | "+ val.reg_nb_dep +"</option>";
+                        });
+                                                        
+                        $("#select1").html(selectReg); // Affichage des choix dans le select #select1
+                    }
+                });
+
+            // Si la valeur renvoyée par le select change, je stocke cette valeur dans la variable region    
+            $("#select1").change(function()
+            {
+                var region = $("#select1 option:selected").val();
+
+                $.get({
+                    url: 'listeoptions2.php',
+                    type: 'GET',
+                    data: 'dep_reg_id=' + region,
+                    dataType: "json",
+                    success: function(data) 
+                        {			
+                            var selectDep = '<option value=""> -- Choisir un département -- </option>';
+                            
+                            $.each(data, function(key, val) { // On utilise les données de la requête pour générer nos choix du select
+                                selectDep += "<option value=\"" + val.dep_id + "\">" + val.dep_id+" | "+ val.dep_nom +"</option>";
+                            });
+                                                            
+                            $("#select2").html(selectDep); // Affichage des choix dans le select #select2
+                        },
+                    
+                        error : function(resultat, statut, erreur){
+         
+                        },
+                
+                        complete : function(resultat, statut){
+                
+                        }
+                    })
+            });
+
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
