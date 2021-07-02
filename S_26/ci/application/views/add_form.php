@@ -1,4 +1,4 @@
-
+<?php //var_dump($categories); ?>
 
 
 <div class="row justify-content-center">
@@ -25,30 +25,52 @@
             <!-- Champ catégories -->
             <div class="mt-3">
                 <label class="form-label" for="pro_cat_id">Catégorie :</label>
-                <select class="form-select" name="pro_cat_id" value="<?php echo set_value('pro_cat_id'); ?>">
+                <select id="pro_cat_id" class="form-select" name="pro_cat_id" value="<?php echo set_value('pro_cat_id'); ?>">
                     <option value="" <?php if (isset($_POST['pro_cat_id']) && $_POST['pro_cat_id'] == "") {
                                             echo "selected";
                                         } ?>>Choisir</option>
                     <?php
 
-                    // Création de la requête et envoi en BDD
-                    $results = $this->db->query("SELECT cat_id, cat_nom FROM categories");
+                    // // Création de la requête et envoi en BDD
+                    // $results = $this->db->query("SELECT cat_id, cat_nom FROM categories");
 
-                    // Récupération des résultats    
-                    $aListe = $results->result();
+                    // // Récupération des résultats    
+                    // $aListe = $results->result();
 
-                    // Ajoute des résultats de la requête au tableau des variables   
-                    $aView["liste_produits"] = $aListe;
+                    // // Ajoute des résultats de la requête au tableau des variables   
+                    // $aView["liste_produits"] = $aListe;
 
-                    //Affichage du nom des catégories dans le select
-                    foreach ($aListe as $row) {
+                    // //Affichage du nom des catégories dans le select
+                    // foreach ($aListe as $row) {
                     ?>
-                        <option value="<?php echo $row->cat_id ?>" <?php if (isset($_POST['pro_cat_id']) && $_POST['pro_cat_id'] == $row->cat_id) {
-                                                                        echo "selected";
-                                                                    } ?>> <?php echo $row->cat_nom ?> </option>
+                        <!-- <option value="<?php //echo $row->cat_id ?>" <?php //if (isset($_POST['pro_cat_id']) && $_POST['pro_cat_id'] == $row->cat_id) {
+                                                                        //echo "selected";
+                                                                    //} ?>> <?php //echo $row->cat_nom ?> </option>
+                    <?php
+                    // }
+                    ?> -->
+
+                    <?php
+                    //Affichage du nom des catégories dans le select
+                    foreach ($categories as $row) 
+                    {
+                    ?>
+                        <option value="<?php echo $row->cat_id ?>" <?php if (isset($produit->pro_cat_id) && $produit->pro_cat_id == $row->cat_id) {echo "selected";} ?>> <?php echo $row->cat_nom ?> </option>
                     <?php
                     }
                     ?>
+
+                </select>
+            </div>
+            
+            <div class="mt-3">
+                <!-- Champ Sous-catégories -->
+                <label class="form-label" for="pro_cat_id">Sous-catégorie :</label>
+                <select id="pro_cat_id2" class="form-select" name="pro_cat_id2" value="<?php echo set_value('pro_cat_id2'); ?>">
+                    <option value="" <?php if (isset($_POST['pro_cat_id2']) && $_POST['pro_cat_id2'] == "") {
+                                            echo "selected";
+                                        } ?>>Choisir</option>
+
                 </select>
             </div>
             <p class="text text-danger fw-bold"><?php echo form_error('pro_cat_id'); ?></p>
@@ -123,3 +145,42 @@
         <!-- FIN formulaire -->
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() 
+        {
+            $("#pro_cat_id").change(function()
+                {
+                    var parent = $("#pro_cat_id option:selected").val();
+
+                    $.get({
+                        url: 'http://localhost/ci/application/models/subcategories.php',
+                        type: 'GET',
+                        data: 'cat_parent=' + parent,
+                        dataType: "json",
+                        success: function(data) 
+                            {			
+                                var selectSub = '<option value="">Choisir</option>';
+                                
+                                $.each(data, function(key, val) { // On utilise les données de la requête pour générer nos choix du select
+                                    selectSub += "<option value=\"" + val.cat_id + "\">" + val.cat_nom +"</option>";
+                                });
+                                                                
+                                $("#pro_cat_id2").html(selectSub); // Affichage des choix dans le select #select2
+                            },
+                        
+                            error : function(resultat, statut, erreur){
+            
+                            },
+                    
+                            complete : function(resultat, statut){
+                    
+                            }
+                    })
+                });
+
+        });
+
+    </script>

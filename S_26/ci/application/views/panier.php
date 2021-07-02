@@ -102,7 +102,7 @@ if ($this->session->panier != null)
                 </table>
             </div>
         </div>
-        </div>  <!-- Fin Tableau Mon Panier -->
+    </div>  <!-- Fin Tableau Mon Panier -->
     <div>
         <div>
             <h3 class="mt-3">Récapitulatif</h3>
@@ -114,7 +114,6 @@ if ($this->session->panier != null)
                 
             </div>
         </div>
-    </div>
     </div>
     <?php 
     } 

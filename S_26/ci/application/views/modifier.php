@@ -1,3 +1,5 @@
+<!-- PAGE UTILISEE UNIQUEMENT POUR LES EXEMPLES DU COURS. PAS D UTILITE DANS LE PROJET JARDITOU -->
+
 <?php echo form_open(); ?>
 
     <input type="hidden" name="pro_id" value="<?php echo $produit->pro_id; ?>"> 

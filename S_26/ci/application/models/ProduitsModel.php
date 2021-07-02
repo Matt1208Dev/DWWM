@@ -32,7 +32,7 @@ class ProduitsModel extends CI_Model
     public function getCategories()
     {
         // Requête de sélection de l'enregistrement souhaité 
-        $requete = $this->db->query("SELECT * FROM categories");
+        $requete = $this->db->query("SELECT * FROM categories WHERE cat_parent IS NULL");
         $categories = $requete->result();
 
         return $categories;

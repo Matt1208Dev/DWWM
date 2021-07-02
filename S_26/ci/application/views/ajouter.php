@@ -1,4 +1,6 @@
 
+<!-- PAGE UTILISEE UNIQUEMENT POUR LES EXEMPLES DU COURS. PAS D UTILITE DANS LE PROJET JARDITOU -->
+
 <?php echo form_open(); ?>
 
 <div class="form-group">

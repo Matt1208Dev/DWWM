@@ -68,6 +68,11 @@ class Produits extends CI_Controller
         // // Chargement de la librairie form_validation
         // $this->load->library('form_validation'); 
 
+        // Requête de sélection des catégories produit
+        $this->load->model('produitsModel');
+        $categories = $this->produitsModel->getCategories();
+        $aView["categories"] = $categories;
+
         if ($this->input->post()) 
         { // 2ème appel de la page: traitement du formulaire
 
@@ -88,13 +93,13 @@ class Produits extends CI_Controller
             { // Echec de la validation, on réaffiche la vue formulaire 
 
                 $this->load->view('header');
-                $this->load->view('add_form');
+                $this->load->view('add_form', $aView);
                 $this->load->view('footer');
             }
             else 
             { // La validation a réussi, nos valeurs sont bonnes, on peut insérer en base
 
-                // On vérifie s'il y a un upload de fichier. Si oui, on réécupère l'extension pour l'ajouter en bdd.
+                // On vérifie s'il y a un upload de fichier. Si oui, on récupère l'extension pour l'ajouter en bdd.
                 if ($_FILES)
                 {
                     // On extrait l'extension du nom du fichier   
@@ -102,6 +107,14 @@ class Produits extends CI_Controller
                     $data['pro_photo'] = $extension;
                 }
 
+                // Si une sous-catégorie a été séléctionnée c'est elle qui sera enregistrée en bdd.
+                if (isset($_POST['pro_cat_id2']))
+                {
+                    $data['pro_cat_id'] = $data['pro_cat_id2'];
+                    unset($data['pro_cat_id2']);                
+                }
+
+                // Insertion en bdd
                 $this->load->model('produitsModel');
                 $this->produitsModel->insertProduct($data);
 
@@ -116,7 +129,7 @@ class Produits extends CI_Controller
                 // On indique les types autorisés (ici pour des images)
                 $config['allowed_types'] = 'gif|jpg|jpeg|png|jfif';
 
-                // // On charge la librairie 'upload'
+                // On charge la librairie 'upload'
                 $this->load->library('upload');
 
                 // On initialise la config 
@@ -157,7 +170,7 @@ class Produits extends CI_Controller
             else 
             { // 1er appel de la page: affichage du formulaire
                 $this->load->view('header');
-                $this->load->view('add_form');
+                $this->load->view('add_form', $aView);
                 $this->load->view('footer');
             }
         } // -- ajouter()

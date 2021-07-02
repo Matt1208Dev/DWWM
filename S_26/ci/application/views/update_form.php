@@ -1,4 +1,5 @@
-
+<?php //var_dump($categories); ?>
+    
     <div class="row justify-content-center">
         <div class="col-md-8 bg-white rounded">
         <?php echo form_open(); ?>
@@ -32,22 +33,60 @@
                     </div> -->
 
                     <!-- Champ catégories -->
-            <div class="mt-3">
-                <label class="form-label" for="pro_cat_id">Catégorie :</label>
-                <select class="form-select" name="pro_cat_id" value="<?php echo set_value('pro_cat_id', $produit->pro_cat_id); ?>">
-                    <?php
+                    <div class="mt-3">
+                        <label class="form-label" for="categories">Catégorie :</label>
+                        <select class="form-select" name="categories" id="categories" value="">
+                            <?php
 
-                    //Affichage du nom des catégories dans le select
-                    foreach ($categories as $row) 
-                    {
-                    ?>
-                        <option value="<?php echo $row->cat_id ?>" <?php if ($produit->pro_cat_id == $row->cat_id) {echo "selected";} ?>> <?php echo $row->cat_nom ?> </option>
-                    <?php
-                    }
-                    ?>
-                </select>
-            </div>
-            <p class="text text-danger fw-bold"><?php echo form_error('pro_cat_id'); ?></p>
+                            //Affichage du nom des catégories dans le select
+                            foreach ($categories as $row) 
+                            {
+                            ?>
+                                <option value="<?php echo $row->cat_id ?>" <?php if ($produit->pro_cat_id == $row->cat_id) {echo "selected";} ?>> <?php echo $row->cat_nom ?> </option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <p class="text text-danger fw-bold"><?php echo form_error('categories'); ?></p>
+
+                    <!-- Champ sous-catégories -->
+                    <div class="mt-3">
+                        <label class="form-label" for="pro_cat_id">Sous-catégorie :</label>
+                        <select class="form-select" name="pro_cat_id" id="subCat" value="<?php echo set_value('pro_cat_id', $produit->pro_cat_id); ?>">
+                            
+                        </select>
+                    </div>
+                    <p class="text text-danger fw-bold"><?php echo form_error('pro_cat_id'); ?></p>
+
+                    <script>
+                        $(document).ready(function() 
+                        {
+                            $("#categories").change(function()
+                            {
+                                var categorie = $("#categories option:selected").val();
+                                console.log(categorie);
+
+                                $.get({
+                                    url: 'subcategories.php',
+                                    type: 'GET',
+                                    data: 'cat_parent=' + categorie,
+                                    dataType: "json",
+                                    success: function(data) 
+                                        {			
+                                            var selectSubCat = '<option value=""> -- Choisir une sous-catégorie -- </option>';
+                                            
+                                            $.each(data, function(key, val) { // On utilise les données de la requête pour générer nos choix du select
+                                                selectSubCat += "<option value=\"" + val.cat_id + "\">" + val.cat_nom +"</option>";
+                                            });
+                                                                            
+                                            $("#subCat").html(selectSubCat); // Affichage des choix dans le select #select2
+                                        }
+                                })
+                            });
+
+                        });
+                    </script>
 
                     <!-- Champ  pro_libelle -->
                     <div class="mt-3">
